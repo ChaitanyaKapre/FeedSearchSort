@@ -9,9 +9,9 @@ module.exports = app.get('/feed', (req, res) => {
   const sortBy = req.query.sortBy || 'name';
   const page = parseInt(req.query.page) || 1;
   const pageSize = parseInt(req.query.pageSize) || 10;
-  
+
   // Search
-  const searchResults = searchPosts(searchQuery);
+  const searchResults = searchPosts(searchQuery.toLowerCase());
   // Sort
   const sortedResults = sortPosts(searchResults, sortBy);
   // Pagination
@@ -35,6 +35,7 @@ function searchPosts(query) {
 
   const isExactMatch = query.startsWith('"') && query.endsWith('"');
   const normalizedQuery = isExactMatch ? query.slice(1, -1) : query.toLowerCase();
+
   return posts.filter((post) => {
     const normalizedPostName = post.name.toLowerCase();
     const normalizedPostDescription = post.description.toLowerCase();
@@ -72,7 +73,7 @@ function getPaginatedResult(posts, page, pageSize) {
 
   return {
     data: paginatedPosts,
-    totalCount: POSTS.length,
+    totalCount: posts.length,
   };
 }
 
