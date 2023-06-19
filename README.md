@@ -10,7 +10,13 @@ This Api handles searching and sorting int hrefeed which is pagination enabled.
 - **[Express](https://expressjs.com/)** to provide server-side logic for the application
 - **[JavaScript] ** to ensure the highest code quality
 
+
 ### Getting started
+
+###### Clone git repository
+
+Run this 'git clone git@github.com:ChaitanyaKapre/FeedSearchSort.git' command to clone the repository into your local.
+
 ###### Installations(After Cloning repository)
 
 1. To install all dependencies run 'npm i' command
